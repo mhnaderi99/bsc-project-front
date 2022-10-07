@@ -27,7 +27,7 @@ export class LineChartComponent implements OnInit {
           fill: false,
           tension: 0.8,
           // borderColor: 'black',
-          backgroundColor: 'blue'
+          // backgroundColor: 'blue'
         }
       ]
     };
@@ -39,7 +39,7 @@ export class LineChartComponent implements OnInit {
       data: y,
       label: title,
       tension: 0.8,
-      backgroundColor: 'green'
+      // backgroundColor: 'green'
     })
    }
 

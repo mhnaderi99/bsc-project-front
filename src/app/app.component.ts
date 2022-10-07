@@ -16,6 +16,7 @@ export class AppComponent {
   upload = false;
   dashboard = true;
   ifShowChart: boolean = false;
+  models: string[] = ['Basic Execution Time Model', 'Logarithmic Poisson Model', 'Goel-Okumoto Model (G-O)', 'Hyper-Exponential Model'];
 
   constructor(private chooseModelService: ChooseModelService) {}
 
@@ -29,8 +30,8 @@ export class AppComponent {
           //file uploaded to the server
           console.log(data);
           this.ifShowChart = true;
-          this.lineChart.setDataSet(data.xdata, data.ydata, "test");
-          this.lineChart.addDataSet(data.fit, "fit");
+          this.lineChart.setDataSet(data.xdata, data.ydata, "Real Data");
+          this.lineChart.addDataSet(data.fit, this.models[data.model]);
 
         } else {
           console.error("Network Error")
