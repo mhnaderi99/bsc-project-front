@@ -1,0 +1,29 @@
+<div *ngIf="uploadCard">
+<mat-card class="example-card">
+
+    <div class="container">
+
+        <mat-card-header>
+        </mat-card-header>
+        
+        <h1>Upload</h1>
+
+        <mat-card-content>
+        
+        </mat-card-content>
+        <input class="form-control" type="file" id="file" (change)="onChange($event)" placeholder="Upload file" accept=".xlsx,.csv">
+    
+        <mat-card-actions class="example-card-actions" >
+            <button mat-raised-button color="primary" (click)="onUpload()" class="btn btn-success">SUBMIT</button>
+        </mat-card-actions>
+
+    </div>
+
+    
+  </mat-card>
+
+  <div class="container" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+
+</div>

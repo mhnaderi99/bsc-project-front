@@ -1,0 +1,5 @@
+<label id="example-radio-group-label">Pick your favorite model</label>
+<mat-radio-group color="primary" aria-labelledby="example-radio-group-label" class="example-radio-group">
+    <mat-radio-button class="example-radio-button" *ngFor="let model of models" [value]="model" (change)="changeSelectedModel(model)"> {{model}}
+    </mat-radio-button>
+</mat-radio-group>
