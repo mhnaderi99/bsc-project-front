@@ -1,4 +1,4 @@
-<div class="container1" *ngIf="upload">
+<!-- <div class="container1" *ngIf="upload">
     <app-file-upload></app-file-upload>
 </div>
 
@@ -22,9 +22,31 @@
     </div>
     
     <div class="right-pane">
-        <!-- <app-results></app-results> -->
         <app-line-chart #line_chart [title]="'test'"></app-line-chart>
         <app-questions-list *ngIf="ifShowChart"></app-questions-list>
     </div>
 
+</div> -->
+
+<div class="container1">
+    <div>
+        <mat-card style="width: fit-content; height: fit-content; margin: 10px;">
+
+            <mat-card-header>
+            
+            </mat-card-header>
+            
+            <mat-card-content>
+                <app-choose-model (selectedModel)="onModelSelected($event)"></app-choose-model>
+            </mat-card-content>
+            
+            <mat-card-actions align="end">
+                <button color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
+            </mat-card-actions>
+            </mat-card>
+    </div>
+    
+        
+        <app-line-chart #line_chart [title]="'test'" style="margin: 10px;"></app-line-chart>
+        <app-questions-list *ngIf="ifShowChart" style="margin: 10px;"></app-questions-list>
 </div>

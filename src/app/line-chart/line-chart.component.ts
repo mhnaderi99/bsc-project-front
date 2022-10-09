@@ -8,39 +8,59 @@ import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
 })
 export class LineChartComponent implements OnInit {
 
-  @Input() title: string;
-  xdata: Array<number>;
-  ydata;
-
   @ViewChild('data') data: LineChartComponent;
 
   constructor() {
    }
 
-   setDataSet(x, y, title): void {
+   setDataSet(xx, yy, x2, y2, title, title2): void {
+    let xy = xx.map((x, i) => ({ x, y: yy[i] }));
+    let x2y2 = x2.map((x, i) => ({ x, y: y2[i] }));
+
+
     this.lineChartData = {
-      labels: x,
-      datasets: [
-        {
-          data: y,
+      datasets: [{
+          data: xy,
           label: title,
+          borderWidth: 2,
           fill: false,
-          tension: 0.8,
-          // borderColor: 'black',
-          // backgroundColor: 'blue'
+          tension: 0,
+
+        },
+        {
+          data: x2y2,
+          label: title2,
+          borderWidth: 2,
+          fill: false,
+          tension: 0,
+
         }
       ]
     };
    }
 
-   addDataSet(y, title): void {
-    console.log(y);
-    this.lineChartData.datasets.push({
-      data: y,
-      label: title,
-      tension: 0.8,
-      // backgroundColor: 'green'
-    })
+   setDataSet2(xx, yy, x2, y2, title, title2): void {
+    let xy = xx.map((x, i) => ({ x, y: yy[i] }));
+    let x2y2 = x2.map((x, i) => ({ x, y: y2[i] }));
+
+
+    this.lineChartData2 = {
+      datasets: [{
+          data: xy,
+          label: title,
+          borderWidth: 2,
+          fill: false,
+          tension: 0,
+        },
+        {
+          data: x2y2,
+          label: title2,
+          borderWidth: 2,
+          fill: false,
+          tension: 0,
+        }
+      ]
+    };
    }
 
   ngOnInit(): void {
@@ -52,19 +72,75 @@ export class LineChartComponent implements OnInit {
   }
 
   public lineChartData: ChartConfiguration<'line'>['data'];
+  public lineChartData2: ChartConfiguration<'line'>['data'];
+
   public lineChartOptions: ChartOptions<'line'> = {
-    responsive: false,
+    
+    elements: {
+      point:{
+          radius: 0
+      }
+    },
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Failure Rate'
+      }
+    },
     scales: {
-      x: {
+      xAxes: {
+        title: {
+          display: true,
+          text: 'time(cpu hour)'
+        },
         beginAtZero: true,
-        type: 'linear',
+        type: 'linear'
       },
-      y: {
+      yAxes: {
+        title: {
+          display: true,
+          text: 'failure rate(1/cpu hour)'
+        },
         type: 'linear'
       }
     }
   };
+
+  public lineChartOptions2: ChartOptions<'line'> = {
+    elements: {
+      point:{
+          radius: 0
+      }
+    },
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Cumulative Failures Count'
+      }
+    },
+    scales: {
+      xAxes: {
+        title: {
+          display: true,
+          text: 'time(cpu hour)'
+        },
+        beginAtZero: true,
+        type: 'linear'
+      },
+      yAxes: {
+        title: {
+          display: true,
+          text: 'Number of Failures'
+        },
+        type: 'linear'
+      }
+    }
+  };
+
   public lineChartLegend = true;
+  public lineChartLegend2 = true;
 
 
 }

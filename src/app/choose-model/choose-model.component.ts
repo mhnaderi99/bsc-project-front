@@ -9,7 +9,11 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class ChooseModelComponent implements OnInit {
   
-  models: string[] = ['Basic Execution Time Model', 'Logarithmic Poisson Model', 'Goel-Okumoto Model (G-O)', 'Hyper-Exponential Model'];
+  models: string[] = ['Basic Execution Time Model',
+   'Logarithmic Poisson Model',
+    'Goel-Okumoto Model (G-O)',
+     'Delayed S-Shaped Model',
+    'Inflection S-Shaped Model'];
   input00: string = '';
 
   @Output() selectedModel = new EventEmitter<number>();
