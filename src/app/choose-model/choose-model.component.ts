@@ -13,7 +13,8 @@ export class ChooseModelComponent implements OnInit {
    'Logarithmic Poisson Model',
     'Goel-Okumoto Model (G-O)',
      'Delayed S-Shaped Model',
-    'Inflection S-Shaped Model'];
+    'Inflection S-Shaped Model',
+    'Yamada Exponential Model'];
   input00: string = '';
 
   @Output() selectedModel = new EventEmitter<number>();

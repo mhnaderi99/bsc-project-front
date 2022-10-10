@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { AccuracyTableComponent } from './accuracy-table/accuracy-table.component';
 import { ChooseModelService } from './choose-model.service';
 import { LineChartComponent } from './line-chart/line-chart.component';
 
@@ -11,16 +12,20 @@ import { LineChartComponent } from './line-chart/line-chart.component';
 export class AppComponent {
 
   @ViewChild('line_chart') lineChart: LineChartComponent;
+  @ViewChild('error_table') errorTable: AccuracyTableComponent;
+
   chosenModelIndex: number = 0;
   title = 'front';
   upload = false;
   dashboard = true;
-  ifShowChart: boolean = false;
+  ifShowChart: boolean = true;
+  ifErrorsClicked: boolean = true;
   models: string[] = ['Basic Execution Time Model',
    'Logarithmic Poisson Model',
     'Goel-Okumoto Model (G-O)',
     'Delayed S-Shaped Model',
-    'Inflection S-Shaped Model'];
+    'Inflection S-Shaped Model',
+    'Yamada Exponential Model'];
 
   constructor(private chooseModelService: ChooseModelService) {}
 
@@ -44,6 +49,19 @@ export class AppComponent {
         }
       }
   );
+  }
+
+  onCalculateErrors(): void {
+    this.chooseModelService.getErrors().subscribe(
+      (response: any) => {
+        if (response.status == 'OK') {
+          this.ifErrorsClicked = true;
+          this.errorTable.updateErrors(response['errors']);
+        } else {
+          console.error("Network Error");
+        }
+      }
+    );
   }
 
   onModelSelected(msg): void {

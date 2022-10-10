@@ -24,7 +24,7 @@ export class LineChartComponent implements OnInit {
           label: title,
           borderWidth: 2,
           fill: false,
-          tension: 0,
+          tension: 0.8,
 
         },
         {
@@ -32,7 +32,7 @@ export class LineChartComponent implements OnInit {
           label: title2,
           borderWidth: 2,
           fill: false,
-          tension: 0,
+          tension: 0.8,
 
         }
       ]
@@ -90,6 +90,7 @@ export class LineChartComponent implements OnInit {
     },
     scales: {
       xAxes: {
+        min: 100,
         title: {
           display: true,
           text: 'time(cpu hour)'

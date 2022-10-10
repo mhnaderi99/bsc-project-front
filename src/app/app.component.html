@@ -32,18 +32,22 @@
     <div>
         <mat-card style="width: fit-content; height: fit-content; margin: 10px;">
 
-            <mat-card-header>
-            
-            </mat-card-header>
-            
             <mat-card-content>
                 <app-choose-model (selectedModel)="onModelSelected($event)"></app-choose-model>
             </mat-card-content>
             
             <mat-card-actions align="end">
+                <button color="accent" mat-raised-button (click)="onCalculateErrors()">Errors</button>
                 <button color="primary" mat-raised-button (click)="onSubmit()">Submit</button>
             </mat-card-actions>
             </mat-card>
+
+            <div  *ngIf="ifErrorsClicked" style="max-width: fit-content; height: fit-content; margin: 10px; margin-top: 20px;">
+                <app-accuracy-table #error_table></app-accuracy-table>
+            </div>
+
+            
+
     </div>
     
         

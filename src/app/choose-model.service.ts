@@ -62,4 +62,10 @@ export class ChooseModelService {
     return this.http.get(apiUrl, {params: queryParams})
   }
 
+
+  getErrors(): Observable<any> {
+    let apiUrl = 'http://localhost:8000/getErrors';
+    return this.http.get(apiUrl)
+  }
+
 }

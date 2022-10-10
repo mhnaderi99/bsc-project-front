@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { QuestionsListComponent } from './questions-list/questions-list.component';
+import { AccuracyTableComponent } from './accuracy-table/accuracy-table.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { QuestionsListComponent } from './questions-list/questions-list.componen
     ResultsComponent,
     ChooseModelComponent,
     LineChartComponent,
-    QuestionsListComponent
+    QuestionsListComponent,
+    AccuracyTableComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { QuestionsListComponent } from './questions-list/questions-list.componen
     HighchartsChartModule,
     FormsModule,
     NgChartsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
