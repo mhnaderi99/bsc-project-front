@@ -63,6 +63,15 @@ export class ChooseModelService {
   }
 
 
+  //current reliability
+  estimateCurrentReliablity(delta_t): Observable<any> {
+    let apiUrl = 'http://localhost:8000/estimateReliability';
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("delta_t",delta_t);
+    return this.http.get(apiUrl, {params: queryParams})
+  }
+
+
   getErrors(): Observable<any> {
     let apiUrl = 'http://localhost:8000/getErrors';
     return this.http.get(apiUrl)

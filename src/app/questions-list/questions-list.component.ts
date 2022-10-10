@@ -13,6 +13,7 @@ export class QuestionsListComponent implements OnInit {
   intensityRate: number = 0;
   remainingFaults: number = 0;
   remainingTime: number = 0;
+  reliabilityTime: number = 0;
   faultsInTimeRange: number = 0;
   fromTime: number = 0;
   toTime: number = 0;
@@ -20,6 +21,10 @@ export class QuestionsListComponent implements OnInit {
   isRemainingFaultsClicked: boolean = false;
   isRemainingTimeClicked: boolean = false;
   isEstimateTimeRangeClicked: boolean = false;
+  isEstimateReliabilityClicked: boolean = false;
+
+  reliabilityValue: number = 0;
+
   step = 0;
 
   setStep(index: number) {
@@ -103,8 +108,25 @@ export class QuestionsListComponent implements OnInit {
   }
 
   onTimeRangeChange(): void {
-    console.log("here");
     this.isEstimateTimeRangeClicked = false;
+  }
+
+
+  onEstimateReliability(): void {
+    if (this.reliabilityTime != null) {
+      this.chooseModelService.estimateCurrentReliablity(this.reliabilityTime).subscribe(
+        (response: any) => {
+          if (response.status == 'OK') {
+            console.log(response.reliability);
+            this.reliabilityValue = response.reliability;
+            this.isEstimateReliabilityClicked = true;
+          } else {
+            console.error("Network Error")
+          }
+        }
+      )
+    }
+    
   }
 
   constructor(private chooseModelService: ChooseModelService) { }

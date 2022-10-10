@@ -106,5 +106,35 @@
           <button mat-button color="accent" (click)="onEstimateFaultsInTimeRange()">Estimate</button>
         </mat-action-row>
       </mat-expansion-panel>
+
+      <!-- ************************************ -->
+
+      <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Current Software Reliability 
+          </mat-panel-title>
+          <mat-panel-description>
+            <!-- Given a custom time, estimates the intensity rate at that time. -->
+            <mat-icon>verified</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Time</mat-label>
+          <input [(ngModel)]="reliabilityTime" matInput type="number" min="0">
+        </mat-form-field>
+  
+  
+        <mat-label *ngIf="isEstimateReliabilityClicked">Software Reliability at t={{reliabilityTime}} will be {{reliabilityValue}}</mat-label>
+  
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="accent" (click)="onEstimateReliability()">Estimate</button>
+        </mat-action-row>
+  
+  
+      </mat-expansion-panel>
   
   </mat-accordion>
