@@ -19,21 +19,27 @@ export class LineChartComponent implements OnInit {
 
 
     this.lineChartData = {
-      datasets: [{
-          data: xy,
-          label: title,
-          borderWidth: 2,
-          fill: false,
-          tension: 0.8,
+      datasets: [
+        // {
+        //   data: xy,
+        //   label: title,
+        //   borderWidth: 2,
+        //   fill: false,
+        //   tension: 0.8,
 
-        },
+        // },
         {
           data: x2y2,
           label: title2,
           borderWidth: 2,
           fill: false,
           tension: 0.8,
-
+          borderColor: 'dodgerblue',
+          backgroundColor: 'lightblue',
+          pointHoverBorderColor: 'dodgerblue',
+          hoverBackgroundColor: 'dodgerblue',
+          hoverBorderColor: 'dodgerblue',
+          pointBackgroundColor: 'dodgerblue'
         }
       ]
     };
@@ -90,7 +96,7 @@ export class LineChartComponent implements OnInit {
     },
     scales: {
       xAxes: {
-        min: 100,
+        min: 10,
         title: {
           display: true,
           text: 'time(cpu hour)'

@@ -2,7 +2,7 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Fault Intensity Rate at Given Time
+          Failure Rate at Given Time
         </mat-panel-title>
         <mat-panel-description>
           <!-- Given a custom time, estimates the intensity rate at that time. -->
@@ -17,7 +17,7 @@
       </mat-form-field>
 
 
-      <mat-label *ngIf="isEstimateIntensityClicked">Intensity Rate at t={{intensityTime}} will be {{intensityRate}}</mat-label>
+      <mat-label *ngIf="isEstimateIntensityClicked">Failure Rate at t={{intensityTime}} will be {{intensityRate}}</mat-label>
 
       <mat-action-row>
         <button mat-button color="accent" (click)="onEstimateIntensity()">Estimate</button>
