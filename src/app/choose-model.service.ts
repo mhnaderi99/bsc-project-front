@@ -72,6 +72,15 @@ export class ChooseModelService {
   }
 
 
+  //safe time reliability
+  safeTimeReliablity(target): Observable<any> {
+    let apiUrl = 'http://localhost:8000/safeTimeReliability';
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("target", target);
+    return this.http.get(apiUrl, {params: queryParams})
+  }
+
+
   getErrors(): Observable<any> {
     let apiUrl = 'http://localhost:8000/getErrors';
     return this.http.get(apiUrl)

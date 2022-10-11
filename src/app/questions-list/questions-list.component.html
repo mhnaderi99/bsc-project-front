@@ -104,6 +104,7 @@
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
           <button mat-button color="accent" (click)="onEstimateFaultsInTimeRange()">Estimate</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>
       </mat-expansion-panel>
 
@@ -132,9 +133,38 @@
         <mat-action-row>
           <button mat-button color="warn" (click)="prevStep()">Previous</button>
           <button mat-button color="accent" (click)="onEstimateReliability()">Estimate</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+  
+      </mat-expansion-panel>
+
+      
+      <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Remaining Reliable Time 
+          </mat-panel-title>
+          <mat-panel-description>
+            <!-- Given a custom time, estimates the intensity rate at that time. -->
+            <mat-icon>hourglass_top</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Reliability Target</mat-label>
+          <input [(ngModel)]="reliabilityTarget" matInput type="number" min="0" max="1">
+        </mat-form-field>
+  
+  
+        <mat-label *ngIf="isEstimateReliabilitySafeTimeClicked">Remaining Reliable Time is {{reliableSafeTimeValue}}</mat-label>
+  
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="accent" (click)="onEstimateSafeTimeReliability()">Estimate</button>
         </mat-action-row>
   
   
       </mat-expansion-panel>
-  
+
   </mat-accordion>

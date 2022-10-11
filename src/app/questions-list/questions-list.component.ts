@@ -14,15 +14,19 @@ export class QuestionsListComponent implements OnInit {
   remainingFaults: number = 0;
   remainingTime: number = 0;
   reliabilityTime: number = 0;
+  reliabilityTarget: number = 0;
+  reliableSafeTimeValue: number = 0;
+
   faultsInTimeRange: number = 0;
   fromTime: number = 0;
   toTime: number = 0;
+
   isEstimateIntensityClicked: boolean = false;
   isRemainingFaultsClicked: boolean = false;
   isRemainingTimeClicked: boolean = false;
   isEstimateTimeRangeClicked: boolean = false;
   isEstimateReliabilityClicked: boolean = false;
-
+  isEstimateReliabilitySafeTimeClicked: boolean = false;
   reliabilityValue: number = 0;
 
   step = 0;
@@ -127,6 +131,22 @@ export class QuestionsListComponent implements OnInit {
       )
     }
     
+  }
+
+  onEstimateSafeTimeReliability(): void {
+    if (this.reliabilityTarget != null) {
+      this.chooseModelService.safeTimeReliablity(this.reliabilityTarget).subscribe(
+        (response: any) => {
+          if (response.status == 'OK') {
+            console.log(response.time);
+            this.reliableSafeTimeValue = response.time;
+            this.isEstimateReliabilitySafeTimeClicked = true;
+          } else {
+            console.error("Network Error")
+          }
+        }
+      )
+    }
   }
 
   constructor(private chooseModelService: ChooseModelService) { }
