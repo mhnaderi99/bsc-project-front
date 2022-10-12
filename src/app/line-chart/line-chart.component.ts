@@ -109,7 +109,8 @@ export class LineChartComponent implements OnInit {
           display: true,
           text: 'failure rate(1/cpu hour)'
         },
-        type: 'linear'
+        type: 'linear',
+        beginAtZero: true
       }
     }
   };
